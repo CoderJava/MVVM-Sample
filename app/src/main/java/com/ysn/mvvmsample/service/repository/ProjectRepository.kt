@@ -5,25 +5,12 @@ import com.ysn.mvvmsample.service.model.Project
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
-class ProjectRepository {
-
-    var githubService: GithubService
-    companion object {
-        val projectRepository: ProjectRepository = ProjectRepository()
-    }
-
-    init {
-        val retrofit = Retrofit.Builder()
-            .baseUrl(GithubService.baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        githubService = retrofit.create(GithubService::class.java)
-    }
+class ProjectRepository @Inject constructor(private val githubService: GithubService) {
 
     fun getProjectList(userId: String): MutableLiveData<List<Project>> {
+
         val data = MutableLiveData<List<Project>>()
         githubService.getProjectList(userId).enqueue(object : Callback<List<Project>> {
             override fun onResponse(call: Call<List<Project>>?, response: Response<List<Project>>?) {

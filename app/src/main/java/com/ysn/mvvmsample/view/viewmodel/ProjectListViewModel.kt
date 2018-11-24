@@ -5,14 +5,12 @@ import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import com.ysn.mvvmsample.service.model.Project
 import com.ysn.mvvmsample.service.repository.ProjectRepository
+import javax.inject.Inject
 
-class ProjectListViewModel constructor(application: Application): AndroidViewModel(application) {
+class ProjectListViewModel @Inject constructor(projectRepository: ProjectRepository,
+                                               application: Application): AndroidViewModel(application) {
 
-    private val projectListObservable: LiveData<List<Project>> = ProjectRepository.projectRepository
+    val projectListObservable: LiveData<List<Project>> = projectRepository
             .getProjectList("Google")
-
-    fun getProjectListObservable(): LiveData<List<Project>> {
-        return projectListObservable
-    }
 
 }
