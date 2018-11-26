@@ -34,7 +34,6 @@ dependencies {
     implementation "com.android.support.constraint:constraint-layout:$constraintLayout"
 
     // Testing Framework
-    implementation 'com.android.support:support-v4:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -49,11 +48,12 @@ dependencies {
     implementation "android.arch.lifecycle:runtime:$arch"
     implementation "android.arch.lifecycle:extensions:$arch"
     kapt "android.arch.lifecycle:compiler:$arch"
-    /*annotationProcessor "com.android.databinding:compiler:3.1.4"*/
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit"
+    implementation "com.squareup.retrofit2:retrofit-converters:$retrofit"
 
     // Dagger
     implementation "com.google.dagger:dagger:$dagger_version"
@@ -63,5 +63,11 @@ dependencies {
     implementation "com.google.dagger:dagger-android:$dagger_version"
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+
+    // RxJava
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+
+    // RxAndroid
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
 
 }

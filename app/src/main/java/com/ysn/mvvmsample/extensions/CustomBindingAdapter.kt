@@ -1,9 +1,9 @@
-package com.ysn.mvvmsample.view.adapter
+package com.ysn.mvvmsample.extensions
 
 import android.databinding.BindingAdapter
 import android.view.View
 
 @BindingAdapter("visibleGone")
-fun View.showHide(show: Boolean) {
+fun View.visibleGone(show: Boolean) {
     visibility = if (show) View.VISIBLE else View.GONE
 }
